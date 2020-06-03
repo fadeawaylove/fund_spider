@@ -122,6 +122,26 @@ class PyppeteerDownloaderMiddleware(object):
     async def get_broswer(self):
         return await launch()
 
+    def process_request(self, request, spider):
+        # Called for each request that goes through the downloader
+        # middleware.
+
+        # Must either:
+        # - return None: continue processing this request
+        # - or return a Response object
+        # - or return a Request object
+        # - or raise IgnoreRequest: process_exception() methods of
+        #   installed downloader middleware will be called
+        self
+        loop.run_until_complete(self._process_request(request))
+        return None
+
+    def _process_request(self, request):
+        page = self.browser.newPage()
+        page.goto(request.url)
+        pass
+
+
     def __del__(self):
         pass
 
